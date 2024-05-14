@@ -14,4 +14,8 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+    $router->resource('companies', 'CompaniesController');
+
+    $router->resource('orders', 'OrdersController');
+
 });

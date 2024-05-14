@@ -19,7 +19,10 @@ class CompaniesController extends AdminController
     {
         return Grid::make(new Company(), function (Grid $grid) {
             $grid->column('id')->sortable();
+            $grid->column('code');
             $grid->column('name');
+            $grid->column('short_name');
+            $grid->column('sap_code');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
         
@@ -41,7 +44,10 @@ class CompaniesController extends AdminController
     {
         return Show::make($id, new Company(), function (Show $show) {
             $show->field('id');
+            $show->field('code');
             $show->field('name');
+            $show->field('short_name');
+            $show->field('sap_code');
             $show->field('created_at');
             $show->field('updated_at');
         });
@@ -56,7 +62,10 @@ class CompaniesController extends AdminController
     {
         return Form::make(new Company(), function (Form $form) {
             $form->display('id');
+            $form->text('code');
             $form->text('name');
+            $form->text('short_name');
+            $form->text('sap_code');
         
             $form->display('created_at');
             $form->display('updated_at');
