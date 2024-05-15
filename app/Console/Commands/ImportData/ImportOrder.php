@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands\ImportData;
 
+use App\Imports\OrderImport;
 use Illuminate\Console\Command;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ImportOrder extends Command
 {
@@ -37,7 +39,13 @@ class ImportOrder extends Command
      */
     public function handle()
     {
-        dd(111);exit();
+
+        $filename = 'order20240514.xlsx';
+        $filePath = public_path('uploads/excel/' . $filename);
+
+
+        Excel::import(new OrderImport(), $filePath);
+
         return 0;
     }
 }
