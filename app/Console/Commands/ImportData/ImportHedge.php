@@ -6,21 +6,21 @@ use App\Imports\OrderImport;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ImportOrder extends Command
+class ImportHedge extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'hlcrm:import-order';
+    protected $signature = 'hlcrm:import-hedge';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '导入CRM 订单数据';
+    protected $description = '导入CRM 保值单数据';
 
     /**
      * Create a new command instance.
@@ -40,7 +40,7 @@ class ImportOrder extends Command
     public function handle()
     {
 
-        $filename = 'order20240515.xlsx';
+        $filename = 'order20240514.xlsx';
         $filePath = public_path('uploads/excel/' . $filename);
 
 

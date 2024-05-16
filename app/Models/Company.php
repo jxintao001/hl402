@@ -10,4 +10,7 @@ class Company extends Model
 {
     use HasDateTimeFormatter;
     use SoftDeletes;
+
+    protected $guarded = ['id'];
+
 }

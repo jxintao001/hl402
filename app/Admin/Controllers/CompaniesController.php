@@ -17,13 +17,11 @@ class CompaniesController extends AdminController
      */
     protected function grid()
     {
-        phpinfo();
         return Grid::make(new Company(), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('code');
             $grid->column('name');
-            //$grid->column('short_name');
-            $grid->short_name('头像')->image('', 50, 50);
+            $grid->column('short_name');
             $grid->column('sap_code');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
@@ -66,11 +64,9 @@ class CompaniesController extends AdminController
             $form->display('id');
             $form->text('code');
             $form->text('name');
-            //$form->text('short_name');
+            $form->text('short_name');
             $form->text('sap_code');
-            $folder_name = "images/" . date("Ym", time()) . '/' . date("d", time());
-            $form->image('short_name', '头像')->removable()->move($folder_name)->uniqueName();
-
+        
             $form->display('created_at');
             $form->display('updated_at');
         });
