@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\ImportData;
 
-use App\Imports\OrderImport;
+use App\Imports\HedgeImport;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -40,11 +40,11 @@ class ImportHedge extends Command
     public function handle()
     {
 
-        $filename = 'order20240514.xlsx';
+        $filename = 'hedge20240516.xlsx';
         $filePath = public_path('uploads/excel/' . $filename);
 
 
-        Excel::import(new OrderImport(), $filePath);
+        Excel::import(new HedgeImport(), $filePath);
 
         return 0;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\ImportData;
 
+use App\Imports\MaterialImport;
 use App\Imports\OrderImport;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
@@ -40,11 +41,11 @@ class ImportMaterial extends Command
     public function handle()
     {
 
-        $filename = 'order20240514.xlsx';
+        $filename = 'material20240516_1.xlsx';
         $filePath = public_path('uploads/excel/' . $filename);
 
 
-        Excel::import(new OrderImport(), $filePath);
+        Excel::import(new MaterialImport(), $filePath);
 
         return 0;
     }

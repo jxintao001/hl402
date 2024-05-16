@@ -17,14 +17,15 @@ class OrderImport implements ToCollection
             if ($k == 0 || count($row) != 33) {
                 continue;
             }
-            $no = $row[3] ?? '';
-            if (!$no) {
+            $crm_id = $row[0] ?? '';
+            if (!$crm_id) {
                 continue;
             }
 
-            $one = Order::where('no', $no)->first();
+            $one = Order::where('crm_id', $crm_id)->first();
             if (!$one) {
                 $order = new Order([
+                    'crm_id'                  => $row[0],
                     'audit_status'            => $row[3],
                     'current_approver'        => $row[4],
                     'is_transmit'             => $row[5],
