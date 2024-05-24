@@ -2,26 +2,25 @@
 
 namespace App\Console\Commands\ImportData;
 
-use App\Imports\MaterialImport;
-use App\Imports\OrderImport;
+use App\Imports\SapStockImport;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ImportMaterial extends Command
+class ImportSapStock extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'hlcrm:import-material';
+    protected $signature = 'hlcrm:import-sap-stock';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '导入CRM 物料数据';
+    protected $description = '导入SAP 库存数据';
 
     /**
      * Create a new command instance.
@@ -41,11 +40,10 @@ class ImportMaterial extends Command
     public function handle()
     {
 
-        $filename = 'material20240518.xlsx';
+        $filename = 'sapStock20240518.xlsx';
         $filePath = public_path('uploads/excel/' . $filename);
 
-
-        Excel::import(new MaterialImport(), $filePath);
+        Excel::import(new SapStockImport(), $filePath);
 
         return 0;
     }

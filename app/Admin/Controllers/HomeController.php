@@ -13,9 +13,10 @@ class HomeController extends Controller
 {
     public function index(Content $content)
     {
-//        $a = (80570*0.9)+(144050*0.1)+15000;
-//        print_r($a);
-//        exit();
+        //$a = (73130*0.991)+(139800*0.009);
+        $a = 100+283+465+171+461+114.8+114.8+123+103+3;
+        print_r($a);
+        exit();
         return $content
             ->header('Dashboard')
             ->description('Description...')

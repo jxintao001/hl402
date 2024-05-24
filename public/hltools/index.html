@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铜管和黄铜管重量计算器</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>铜管和黄铜管重量计算器</h1>
+    <label for="outerDiameter">外径（mm）：</label>
+    <input type="text" id="outerDiameter" placeholder="请输入铜管的外径">
+    <label for="wallThickness">壁厚（mm）：</label>
+    <input type="text" id="wallThickness" placeholder="请输入铜管的壁厚">
+    <button id="calculateButton">计算</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#calculateButton').click(function(){
+            var outerDiameter = parseFloat($('#outerDiameter').val());
+            var wallThickness = parseFloat($('#wallThickness').val());
+
+            var copperWeight = 0.02796 * wallThickness * (outerDiameter - wallThickness);
+            var brassWeight = 0.02670 * wallThickness * (outerDiameter - wallThickness);
+
+            $('#result').html(`
+            <p>铜管每米重量（公斤）：${copperWeight.toFixed(2)}</p>
+            <p>黄铜管每米重量（公斤）：${brassWeight.toFixed(2)}</p>
+        `);
+        });
+    });
+</script>
+</body>
+</html>
